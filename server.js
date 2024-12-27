@@ -1,16 +1,15 @@
 const express = require('express');
-const path = require('path');
 const cors = require('cors');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 require('dotenv').config();
+const path = require('path');  
 
 const app = express();
 app.use(express.json());
-app.use(cors()); // Enable CORS for all routes
-app.use(express.static(path.join(__dirname, 'public'))); // 'public' folder for static files
+app.use(cors()); 
 
-
-
+// Serve static files from the root directory
+app.use(express.static(path.join(__dirname)));  // Serve files from the root directory
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -21,7 +20,7 @@ app.post('/api/generate', async (req, res) => {
     async function generateContent(prompt, retries = 3) {
         try {
             const result = await model.generateContent(prompt);
-            return res.json({ response: result.response.text()});
+            return res.json({ response: result.response.text() });
         } catch (error) {
             if (error.status === 429 && retries > 0) {
                 console.log('Rate limit exceeded. Retrying...');
@@ -34,8 +33,8 @@ app.post('/api/generate', async (req, res) => {
     }
 
     await generateContent(message); 
-}
-);
+});
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
