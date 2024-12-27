@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 require('dotenv').config();
@@ -6,6 +7,10 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 app.use(cors()); // Enable CORS for all routes
+app.use(express.static(path.join(__dirname, 'public'))); // 'public' folder for static files
+
+
+
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -32,6 +37,10 @@ app.post('/api/generate', async (req, res) => {
 }
 );
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 app.listen(3000, () => {
-    console.log('Server running on port 3000');
+    console.log('Server is running on http://localhost:3000');
 });
