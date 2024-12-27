@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    
+    <title>Gemini</title>
+    
+
+    <style>
+
+
+.scrollbar-hide {
+    /* scrollbar-width: none;  */
+    -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; 
+}
+
+.loading-bar {
+    position: relative;
+    
+    width: 80%; 
+    height: 20px; 
+    background-color: #4d6883; 
+    border-radius: 3px;
+    overflow: hidden; 
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); 
+}
+
+.loading-bar .light {
+    position: absolute;
+    width: 40%; 
+    height: 100%; 
+    background: linear-gradient(90deg, transparent, rgba(225, 51, 150, 0.8), transparent);
+    transform: translateX(-100%);
+    animation: slide-light 1.25s infinite linear; 
+}
+
+@keyframes slide-light {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.chat-message {
+   
+    border-radius: 10px;
+ 
+    
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 0px transparent inset !important;
+}
+
+    </style>
+
+
+
+
+</head>
+<body  class="bg-[#1e1f20]  text-white font-sans  h-full-screen">
+
+
+    <!-- navigation bar -->
+
+    <div class="flex fixed w-full   mb-20 p-6 top-0   justify-between   shadow-md  ">
+        <div class="text-3xl hover:bg-slate-800  rounded-xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 font-medium">
+            Gemini
+        </div>
+        <div class="text-sm hidden sm:block">
+            Gemini was just updated. <a href="#" class="underline" aria-label="See update">See update</a>
+        </div>
+        <div>
+            <button class="bg-gray-700 text-sm py-1 px-3 rounded" aria-label="Try Gemini Advanced">Try Gemini Advanced</button>
+
+        </div>
+    </div>
+
+
+
+
+
+<section id="userName" class="flex   flex-col over justify-center items-center w-full h-screen bg-transparent ">
+        <h1 class="text-4xl py-5 font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 ">
+            Hello, Sir 🤖
+            please ask me anything
+        </h1>
+    </section>
+
+
+
+
+    <!-- content-message -->
+   
+       <div id="chatBox" class="bg-transparent flex-grow border-hidden fixed flex flex-col gap-3  mx-3  sm:mx-10 md:ml-32 lg:mr-30 lg:ml-56 mt-28 p-4 rounded-md  max-h-[83vh]  h-[83vh] lg:h-[80vh] lg:max-h-[80vh] w-[95%] sm:[80%] md:w-[75%] lg:w-[70%]  xl:h-[80%] xl:max-h-[90%] overflow-y-scroll scrollbar-hide">
+
+</div>
+    
+
+
+
+     <!-- footer -->
+
+     <div class="fixed   bottom-0 flex my-2 justify-center w-full">
+
+     <div class=" py-2 flex justify-center my-1 w-full">
+        <div id="outerinput" class="flex lg:mx-72 md:mx-40 sm:mx-40  mx-20  border-hidden rounded-full w-full px-3 bg-[#282a2c] py-3 gap-4">
+      
+
+            <input id="userInput" type="text" placeholder="Ask Gemini" autocomplete="off" class="flex-grow   bg-transparent      placeholder:font-medium   text-white  focus:outline-none py-2 px-3 w-full rounded-full" />
+            <button id="sendBtn" type="submit" class="material-symbols-outlined " aria-label="Send">
+                send
+            </button>
+
+            <button  id="toggle-theme-button" class="material-symbols-outlined" aria-label="Toggle Theme">
+                contrast
+            </button>
+        </div>
+    </div>
+</div>
+
+  
+
+    
+</body>
+
+</html>
+<script src="index.js" ></script>
