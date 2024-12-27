@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     userInput.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
-            event.preventDefault(); // Prevents default form submission
+            event.preventDefault(); 
             handleUserInput();
         }
     });
